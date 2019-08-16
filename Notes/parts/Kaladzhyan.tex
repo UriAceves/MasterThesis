@@ -1,0 +1,195 @@
+This section corresponds to \cite{2018Bena}.\\
+
+The treatment of boundaries is a problem that has been around for a long time in quantum mechanics. There are of course ways to deal with them, among these techniques we can find, diagonalization of tight-binding hamiltonians with open boundary conditions. Analytic solutions involve the enforcing of boundary conditions that make the problems less general. Other options can be using boundary Green's functions and the bulk boundary correspondence.\\
+
+In this paper they propose a different approach, and it works as follow. Instead of considering a finite system with certain boundary types, we need to consider infinite systems with localized impurities that follow the shape of the boundary. The next step is to obtain the impurity-induced states using T-matrix techniques\footnote{I guess I have to check what are these things.}. The final trick is now take the impurity potential to infinity, with this we can obtain the surface states we were looking for.\\
+
+To illustrate this method the paper discusses two different systems dealing with Majorana zero modes: the Kitaev chain, and chiral states in a 2D system described by the spinless Kitaev model\footnote{Once again the system needs to be spinless, otherwise Majorana zero modes can not arise.}. Then the analytical results are compared against numerical tight-binding calculations to show that they match. This technique can be used for other systems supporting both topological and trivial boundary modes\footnote{The paper were they will publish this results is in preparation according to them, I checked arXiv and there's nothing there yet.}, such as models combining s-wave superconductivity, spin-orbit coupling and Zeeman field, Weyl and Dirac materials, topological insulators, and graphene\footnote{A doubt I would have here is how many of this things need to be in the models in order for the method to be successful, can it be just one of these characteristics or do we need a combination of all of them forcefully to use the method?}.\\
+
+The proposed algorith in the paper goes as follows:
+
+\begin{enumerate}
+    \item Take an infinite system (1D, 2D, 3D. Doesn't matter)
+    \item Introduce a scalar impurity described by a delta function potential
+    \item Use the T-matrix formalism to find the eigenenergies and eigenstates of the impurity bound states
+    \item Set the impurity potential to infinity to recover the boundary modes
+\end{enumerate}
+
+Now on a quick glimpse we could think that point 4 is unnecessary because we already have a delta function there, but the delta is just spatial, and what I mean by this is that in point two we set, for example for 1D, a potential like this $U\delta(x-x_0)$, while in point four we take the limit $U\rightarrow \infty$, this will be further explained.
+
+\subsection{T-Matrix formalism}
+
+A hamiltonian in momentum space will be denoted $\mathcal{H}_p$. We define the unpertubed Matsubara Green's functions as
+
+\begin{equation}
+    G_0(\vect{p},i\omega_n) \equiv (i\omega_n-\mathcal{H}_p)^{-1},
+\end{equation}
+
+where $\omega_n$ are the Matsubara frequencies. If we have an impurity, the Green function is
+
+\begin{equation}
+    G(\vect{p}_1, \vect{p}_2, i\omega_n) = G_0(\vect{p}_1,i\omega_n)\delta(\vect{p}_1 - \vect{p}_2) + G_0(\vect{p}_1, i\omega_n)T(\vect{p}_1,\vect{p}_2,i\omega_n)G_0(\vect{p}_2,i\omega_n),
+\end{equation}
+
+where the T-matrix $T(\vect{p}_1,\vect{p}_2,i\omega_n)$ describes the cumulated effect of the impurity-scattering processes. In 1D for the case of an impurity described by a delta function $V_{imp}(x) = V\delta(x)$ the T-matrix is momentum independent and is
+
+\begin{equation}
+    T(p_1,p_2,i\omega_n) = [\mathbb{1} - V\cdot \int \frac{dp}{2\pi}G_0(p,i\omega_n)]^{-1}\cdot V,
+\end{equation}
+in 2D it is as follows
+\begin{equation}
+    T(p_{1x},p_{1y},p_{2x},p_{2y},i\omega_n) = \delta(p_{1y} - p_{2y})[\mathbb{1} - \int \frac{dp_x}{2\pi} G_0(p_x,p_{1y},i\omega_n)]^{-1}\cdot V.
+    \label{kaladz03}
+\end{equation}
+For the function in 2D we should point out that it is independent on $p_{1x}, p_{2x}$ since the impurity is a delta in $x$, and a delta in $p_{1y} - p_{2y}$ since  the impurity is independent in $y$ position.
+
+The paper assumes zero temperature and uses this formalism to calculate the retarded Green's function obtained through analytical continuation (setting $i\omega_n$ to $E + i\delta$ and $\delta \rightarrow 0^+$).
+
+\subsection{1D Kitaev Chain with Green's functions}
+
+We start with the tight-binding hamiltonian of an infinite spinless Kitaev chain
+
+\begin{equation}
+    \mathcal{H}_{TB} = \sum -\mu c_i^\dagger c_i - \left(tc_i^\dagger c_{i+1} - \Delta c_i c_{i+1}^\dagger + h.c. \right),
+\end{equation}
+
+where $t$ is the hopping amplitude, $\mu$ the chemical potential, and $\Delta > 0$ the superconducting pairing amplitude. In momentum space this hamiltonian becomes
+
+\begin{equation}
+    \mathcal{H}_p^{1D} =
+    \begin{pmatrix}
+     -\mu/2 - t\cos(p) & i\Delta \sin(p)\\
+     -i\Delta \sin(p) & \mu/2 + t\cos(p)
+    \end{pmatrix}.
+\end{equation}
+
+We then, introduce our delta impurity potential
+
+\begin{equation}
+    V_{imp}(x) = U\delta(x)\begin{pmatrix}
+    1&0\\
+    0&-1
+    \end{pmatrix} \equiv U\delta(x)\sigma_z.
+    \label{kaladz06}
+\end{equation}
+
+The problem of the impurity Yu-Shiba-Rusinov\footnote{No idea what this is.} is solved using the T-matrix formalism. In momentum space the unperturbed retarded Green's function is $\mathcal{G}_0(p,E) = [E+i0-\mathcal{H}_p^{1D}]^{-1}$, the real counterpart is given by the Fourier transform
+
+\begin{equation}
+    \mathcal{G}_0(x,E) = \int \frac{dp}{2\pi}\mathcal{G}_0(p,E)e^{ipx}.
+\end{equation}
+
+In order to compute the energy of the YSR states as a function of the impurity potential we take $\mu=0$ and we compute analytically the real space Green's function at $x=0$: 
+
+\begin{equation}
+    \mathcal{G}_0(0,E) = \begin{pmatrix}
+    EX_0(0) & 0\\
+    0 & EX_0(0)
+    \end{pmatrix},
+    \label{kalad07}
+\end{equation}
+where\\
+\colorbox{orange}{05.03.19 I actually tried to solve this and I couldn't get to equation \ref{kalad07} and failed. }\\
+\colorbox{orange}{Might be related to the YSR things I don't know.}
+\begin{equation}
+    X_0(0) = -\frac{1}{\sqrt{t^2 - E^2}}\frac{1}{\sqrt{\Delta^2 - E^2}}.
+\end{equation}
+
+Now, if we want the energies of the impurity bound states we need to calculate the poles of the T-matrix
+
+\begin{equation}
+    1 \pm U \frac{1}{\sqrt{t^2 - E^2}}\frac{E}{\sqrt{\Delta^2 - E^2}} = 0.
+\end{equation}
+
+This equation yields four solutions, two of them lie outside the gap, we are interested in the pair that lie inside the gap
+
+\begin{equation}
+    E_\pm = \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 + U^2 - \sqrt{(t^2 + \Delta^2 + U^2)^2 - 4t^2\Delta^2}\right]}
+\end{equation}
+
+When $U\rightarrow0$
+
+\begin{equation*}
+    \begin{aligned}
+        E_\pm &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 + - \sqrt{(t^2 + \Delta^2)^2 - 4t^2\Delta^2}\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 - \sqrt{t^4 + 2t^2\Delta^2 + \Delta^4 - 4t^2\Delta^2}\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 - \sqrt{t^4 - 2t^2\Delta^2 + \Delta^4}\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 - \sqrt{(t^2 - \Delta^2)^2}\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 - (t^2 - \Delta^2)\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ t^2 + \Delta^2 - t^2 + \Delta^2)\right]},\\
+        &= \pm \sqrt{\frac{1}{2}\left[ 2\Delta^2\right]},\\
+        &= \pm \sqrt{\Delta^2},\\
+        &= \pm \Delta
+    \end{aligned}
+\end{equation*}
+
+whereas when $U\rightarrow \infty$ the solutions decay as 
+
+\begin{equation}
+    E_\pm = \pm \frac{\Delta}{U/t}. 
+\end{equation}
+
+If we have an infinite potential then, the energies of the bound states decay to zero, i.e. $E_\pm \rightarrow 0$. In the remaining part of the paper $x$ is to be considered a multiple of the lattice parameter 
+$a$ (here assumed as 1), in other words $x=na$, $n\in \mathbb{Z}$. This allows us to obtain an exact form for both bounded wavefunctions
+
+\begin{eqnarray}
+    \Psi_1(x) \propto \begin{pmatrix} 1 \\ -sgn(x) \end{pmatrix} e^{-\frac{1}{2}\ln \left(\frac{1+\Delta/t}{1-\Delta/t}\right)|x|}\sin\left(\frac{\pi|x|}{2}\right),\\
+    \Psi_2(x) \propto \begin{pmatrix} -sgn(x) \\ 1 \end{pmatrix} e^{-\frac{1}{2}\ln \left(\frac{1+\Delta/t}{1-\Delta/t}\right)|x|}\sin\left(\frac{\pi|x|}{2}\right).
+\end{eqnarray}
+
+We note that by combining both states we can create the Majorana zero modes. A simple example can be used to illustrate this point, let's forget for a while about the normalization and add both, we will get 
+
+\begin{equation*}
+    \Psi_- = \begin{pmatrix} 1 -sgn(x)\\ -sgn(x) + 1 \end{pmatrix} e^{-\frac{1}{2}\ln \left(\frac{1+\Delta/t}{1-\Delta/t}\right)|x|}\sin\left(\frac{\pi|x|}{2}\right)
+\end{equation*}
+
+It's clear that the function will be localized at the left of $x=0$ and will vanish at the right side. And mutatis mutandi for the next function
+that will vanish at the left of $x=0$
+\begin{equation*}
+    \Psi_- = \begin{pmatrix} 1 + sgn(x)\\ -sgn(x) - 1 \end{pmatrix} e^{-\frac{1}{2}\ln \left(\frac{1+\Delta/t}{1-\Delta/t}\right)|x|}\sin\left(\frac{\pi|x|}{2}\right)
+\end{equation*}
+
+In the paper this results are compared against the numerical ones derived from diagonalizing the 1D Kitaev chain with an impurity\footnote{I wonder how one does that though.}, both match.
+
+\subsection{2D Kitaev model}
+
+As in the previous section our starting point is the hamiltonian of this system
+
+\begin{equation}
+    \mathcal{H}_{TB}^{2D} = \sum_{m,n} - \mu c^\dagger_{m,n} c_{m,n} - \left[t\left(c^\dagger_{m+1,n}c_{m,n} + c^\dagger_{m,n+1}c_{m,n}\right) - \Delta(c_{m,n}c_{m+1,n} - i c_{m,n}c_{m,n+1}) + H.c. \right],
+\end{equation}
+
+where again $\mu$ is the chemical potential, $t$ the hopping parameter, and $\Delta > 0$ the pairing amplitude. The hamiltonian in momentum space is given by
+
+\begin{equation}
+    \mathcal{H}_{\vect{p}}^{2D} = \begin{pmatrix} \epsilon_{\vect{p}} & \Delta_{\vect{p}} \\ \Delta_{\vect{p}}^* & - \epsilon_{\vect{p}}
+    \end{pmatrix},
+\end{equation}
+
+where $\epsilon_{\vect{p}}= -\mu/2 - t(\cos(p_x) + \cos(p_y))$, $\Delta_{\vect{p}} = i\Delta(\sin(p_x) + i\sin(p_y))$.
+
+The impurity we want (along the z axis) can be described using eq. \ref{kaladz06}. According to eq. \ref{kaladz03} the poles of the T-matrix (which correspond to the impurity energy levels) depend on $p_y$and can be obtained by solving
+
+\begin{equation}
+    \det \left[ \mathbb{1}_2 - U\sigma_z \cdot \int \frac{dp_x}{2\pi}\mathcal{G}_0(p_x,p_{1y},E)\right] =0.
+    \label{kaladz16}
+\end{equation}
+
+At low energies the hamiltonian can be approximated as
+
+\begin{equation}
+    \mathcal{H}_{\vect{p}}^{2D} \approx \begin{pmatrix} \xi_{\vect{p}} & i\varkappa (p_x + ip_y) \\ -i\varkappa (p_x + ip_y) &  -\xi_{\vect{p}} \end{pmatrix},
+\end{equation}
+with $\xi_{\vect{p}} = \frac{\vect{p}^2}{2m_0} - \frac{\vect{p}_F^2}{2m_0}$, where $\vect{p}_F$ is the Fermi momentum, $m_0$ is the quasiparticle mass, and $\varkappa$ the p-wave pairing parameter. For this low energy approximation we can obtain an analytical solution for eq. \ref{kaladz16} for the poles of the T-matrix. The final result is 
+
+\colorbox{yellow}{06.03.19 It would be a good idea to check this result.}
+\begin{equation}
+    E_\pm = \pm \varkappa p_y.
+\end{equation}
+
+In order to get the Majorana modes we take the limit $p_y\rightarrow 0$ and hence $E\rightarrow0$. Those two solutions correspond to counterpropagating chiral Majorana modes.\\
+
+The results are finally compared. The average perturbed spectral function($A(\vect{p},E) = -\frac{1}{\pi}\Im\{\text{Tr}[\mathcal{G}(\vect{p},\vect{p},y)] \}$) is plotted in order to get the energy spectrum. The poles of this function contain both, the unperturbed and the impurity-induced band structures. The analytical and numerical results agree in the vicinity of $p_y=0$ (according to our approximation when $p_y\rightarrow0$).\\
+
+\colorbox{orange}{06.03.19 In principle this is finished, but it has a lot of textual phrases from the paper}\\
+\colorbox{orange}{so not all of it is mine. Either rewrite those parts or cite correctly.}

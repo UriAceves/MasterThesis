@@ -1,0 +1,45 @@
+This things come from \cite{Zhu2016}
+
+Let's start with the second-quantized Hamiltonian for electrons experiencing an effective two-particle attractive interaction
+
+\begin{equation}
+    \mathscr{H} = \int d\bm{r} \psi_\alpha^\dagger(\bm{r})h_\alpha(\bm{r})\psi_\alpha(\bm{r}) - \frac{1}{2} \int \int d\bm{r}d\bm{r}'V_{\text{eff}}(\bm{r},\bm{r}')\psi_\alpha^\dagger(\bm{r})\psi_\beta^\dagger(\bm{r}')\psi_\beta(\bm{r}')\psi_\alpha(\bm{r}).
+\end{equation}
+Where $\psi_\alpha^\dagger(\bm{r})$ and $\psi_\alpha(\bm{r})$ are creation and annihilation field operators of an electron with spin $\alpha$ at position $\bm{r}$. They obey the anti-commutation relation
+\begin{eqnarray}
+    \{\psi_\alpha(\bm{r}),\psi_\beta^\dagger(\bm{r}')\} = \delta(\bm{r} - \bm{r}')\delta_{\alpha \beta}.\\
+    \{\psi_\alpha(\bm{r}),\psi_\beta(\bm{r}')\} = \{\psi_\alpha^\dagger(\bm{r}),\psi_\beta^\dagger(\bm{r}')\} = 0.\label{2QHamil}
+\end{eqnarray}
+And the single particle Hamiltonian is given by
+\begin{equation}
+    h_\alpha(\bm{r}) = \frac{[\frac{\hbar}{i}\nabla_{\bm{r}} +\frac{e}{c}\bm{A}(\bm{r})]^2}{2m_e} -e\phi(\bm{r}) + \alpha\mu_bH(\bm{r}) - E_F.
+\end{equation}
+where $\bm{A}(\bm{r})$ and $\phi(\bm{r})$ the vector and scalar potentials. $H(\bm{r})$ is the magnetic field, and it is assumed to be in the $z$ direction. The single particle energy is measured with respect to the Fermi energy $E_F$. $V_{\text{eff}}(\bm{r},\bm{r}')$ is chosen to be positive and a prefactor ``$-$'' is introduced to denote the attractive interaction in the second term of eq. \ref{2QHamil}. Also the symmetry relation $V_{\text{eff}}(\bm{r},\bm{r}') = V_{\text{eff}}(\bm{r}',\bm{r})$ holds. Finally we follow Einstein notation, so repeated index implies summation.\\
+
+We generalize the second-quantized Hamiltonian in eq. \ref{2QHamil}, to include the spin-orbit coupling and the spin-flip scattering interactions, in addition to the regular potential scattering. The single-particle part of the Hamiltonian then looks like
+\begin{equation}
+    H_0 = \int \int d\bm{r}d\bm{r}' \psi_\alpha^\dagger(\bm{r}) h_{\alpha\beta}(\bm{r},\bm{r}') \psi_\beta(\bm{r}')
+\end{equation}
+where $h_{\alpha\beta}(\bm{r},\bm{r}')$ is general enough to contain the non-local and spin-flip effects. We can then express the field operators in the localized-state basis as
+\begin{eqnarray}
+    \psi_\alpha(\bm{r}) = \sum_i w(\bm{r} - \bm{R}_i)c_{i\alpha},\\
+    \psi_\alpha^\dagger(\bm{r}) = \sum_i w^*(\bm{r} - \bm{R}_i)c_{i\alpha}^\dagger,
+\end{eqnarray}
+where $c_{i\alpha}^\dagger$ $(c_{i\alpha})$ creates (annihilates) an electron of spin $\alpha$ at site $i$, and $w(\bm{r} - \bm{R}_i)$ is a localized orbital around the atomic site $\R_i$. Some good options for this are atomic orbitals and maximally localized Wannier orbitals.
+
+
+
+
+
+
+
+
+\subsection{Derivation of BdG Equations in a Tight-Bind Model}
+
+\subsubsection{Local Density of states and Bond Current}
+
+\subsubsection{Optical Conductivity and Superfluid Density in the Lattice Model}
+
+\subsection{Solution to the BdG Equations in the Lattice Model for a Uniform Superconductor}
+
+\subsection{Abrikosov-Gorkov Equations in the Lattice Model}

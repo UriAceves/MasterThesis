@@ -1,0 +1,207 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Simple Sectioned Essay Template
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when
+% writing essay content.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,twoside,a4paper]{article} % Default font size is 12pt, it can be changed here
+
+\usepackage{geometry} % Required to change the page size to A4
+\geometry{legalpaper, margin=2.5cm}
+
+
+\usepackage{graphicx} % Required for including pictures
+\usepackage{cancel}
+\usepackage{float} % Allows putting an [H] in \begin{figure} to specify the exact location of the figure
+\usepackage{wrapfig} % Allows in-line images such as the example fish picture
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{lipsum} % Used for inserting dummy 'Lorem ipsum' text into the template}
+\usepackage{bbold}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage{braket}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{bm}
+\usepackage{tgtermes}
+\usepackage{mathrsfs}
+
+\pagestyle{fancy}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[LO]{MAJORANA MODES IN MATERIALS}
+\fancyhead[RE]{\leftmark}
+
+\linespread{1.0} % Line spacing
+
+\newcommand{\r}{\bm{r}}
+\newcommand{\R}{\bm{R}}
+
+\newcommand{\vect}[1]{\boldsymbol{#1}} % Uncomment for BOLD vectors.
+%\newcommand{\vect}[1]{\vec{#1}} % Uncomment for ARROW vectors.
+
+%\setlength\parindent{0pt} % Uncomment to remove all indentation from paragraphs
+
+\graphicspath{{Pictures/}} % Specifies the directory where pictures are stored
+\newcommand{\norm}[1]{\left\|#1\right\|}
+
+% \renewcommand{\thesection}{\Roman{section}}
+% \renewcommand{\thesubsection}{\thesection.\Roman{subsection} }
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} % Defines a new command for the horizontal lines, change thickness here
+
+\center % Center everything on the page
+\textsc{\LARGE Forschungszentrum Jülich\\\vspace{1cm}PGI- 1, IAS- 1}\\[5cm] % Name of your university/college
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Majorana Modes in Materials}\\[0.4cm] % Title of your document
+\HRule \\[1cm]
+
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+Uriel \textsc{Aceves} % Your name
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{In collaboration with:} \\
+Juba \textsc{Bouaziz} \\% Supervisor's Name
+Samir \textsc{Lounis}\\ % Supervisor's Name\\
+Philipp \textsc{Rüßmann} % Supervisor's Name
+\end{flushright}
+\end{minipage}\\[3cm]
+
+{\large \today}\\[5cm] % Date, change the \today to a set date if you want to be precise
+
+\includegraphics[width=0.5\textwidth]{logo.jpeg}\\[1cm] % Include a department/university logo - this will require the graphicx package
+
+\vfill % Fill the rest of the page with whitespace
+
+\end{titlepage}
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\tableofcontents % Include a table of contents
+
+\newpage % Begins the essay on a new page instead of on the same page as the table of contents
+
+%----------------------------------------------------------------------------------------
+%	INTRODUCTION
+%----------------------------------------------------------------------------------------
+
+
+\section*{Disclaimer}
+
+This notes are my own revision of literature concerning this topic. The main source for every section is always mentioned at the first paragraph. Explicit calculations here are made with the idea of clarifying some missing steps on the papers. The sections are chronologically organized (as I read them), so the sequence might not be the optimal to learn about this. Eventually I will organize it in a nice way to take someone from zero to hero.\\
+
+This is a color code I will use to signal work that I need to do and to determine what to address first, it would be useful to add the date on each box.
+
+\begin{itemize}
+    \item \colorbox{green}{dd.mm.yy Life can go on if this is ignored.}
+    \item \colorbox{yellow}{dd.mm.yy Not urgent, but needs to be done at some point.}
+    \item \colorbox{orange}{dd.mm.yy Second in the list of importance.}
+    \item \colorbox{red}{dd.mm.yy Should take care of this things first.}
+\end{itemize}
+
+\section{Abstract}
+
+\section{Derivation of the Dirac equation}\label{dirEq}
+\input{parts/dirac.tex}
+
+\newpage
+\section{Colloqium: Majorana fermions in nuclear, particle, and solid-state physics}
+\input{parts/revModPhys.tex}
+
+\newpage
+\section{Unpaired Majorana fermions in quantum wires}
+\input{parts/kitaev.tex}
+
+\newpage
+\section{Majorana Qubits}
+\input{parts/hassler.tex}
+
+\newpage
+\section{Bogoliuvob-de Gennes equations in tight binding}
+\input{parts/bdgTightBinding.tex}
+
+\newpage
+\section{Obtaining Majorana and other boundary modes from the metamorphosis of impurity-induced states:  exact solutions via T-matrix}
+\input{parts/Kaladzhyan.tex}
+
+\newpage
+\section{Presence versus absence of end-to-end nonlocal conductance correlations in Majorana nanowires: Majorana bound states versus Andreev bound states}
+\input{parts/lai.tex}
+
+\newpage
+\section{Distinguishing Majorana Zero Modes from Impurity States through Time-Resolved Transport}
+\input{parts/tuovinen.tex}
+
+\newpage
+
+
+\section{Questions}
+\input{parts/questions.tex}
+
+\newpage
+\section{To do}
+\input{parts/todo.tex}
+
+
+\newpage
+
+\bibliography{MyNotes.bib}
+\bibliographystyle{ieeetr}
+
+
+%
+% \lipsum[3] % Dummy text
+%
+% \begin{figure}[H] % Example image
+% \center{\includegraphics[width=0.5\linewidth]{placeholder}}
+% \caption{Example image.}
+% \label{fig:speciation}
+% \end{figure}
+%
+
+%
+% %------------------------------------------------
+% \newpage
+% \subsubsection{Subsubsection 2} % Sub-sub-section
+%
+% \lipsum[6] % Dummy text
+% \begin{wrapfigure}{l}{0.4\textwidth} % Inline image example
+%   \begin{center}
+%     \includegraphics[width=0.38\textwidth]{fish}
+%   \end{center}
+%   \caption{Fish}
+% \end{wrapfigure}
+% \lipsum[7-8] % Dummy text
+%
+
+
+\end{document}

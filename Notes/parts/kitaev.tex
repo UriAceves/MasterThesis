@@ -1,0 +1,17 @@
+Original paper \cite{2001kitaev}.\\
+
+The idea of this paper is to construct a system such that we can have two isolated states immune to decoherence. This type of systems can be extremely useful for quantum computing. If qbits can not lose coherence, then there is no necessity of implementing correction algorithms, and this would lead to simpler and faster implementations of quantum algorithms.\\
+
+According to Kitaev, there is two kind of errors that can affect a quantum state
+
+\begin{enumerate}
+    \item Classical errors that flip the value of a qbit from $\ket{0}$ to $\ket{1}$.
+    \item Phase errors that change the sign of all the states with the jth qbit equal to $\ket{1}$ with respect to the ones that have a jth qbit equal to $\ket{0}$.
+\end{enumerate}
+
+It seems to be the case that usually getting rid of one of those error sources is simple, but the problem complicates when both need to be suppressed.\\
+
+Kitaev then proceeds to mentally set a system that would be a candidate for eliminating these errors. Let's imagine an isolated\footnote{Do we need the system to be isolated? I think it should be sufficient if we ask for the system to conserve fermionic charge.} one dimensional system consisting of fermionic sites that can be either empty ($\ket{0}$) or occupied ($\ket{1}$). Classical errors are impossible to happen only in one site, this would imply that either one fermion got annihilated, or got created out of nowhere. But there are mechanisms that would make possible for two classical errors to happen simultaneously, let's say for example that we have a state $\ket{01}$\footnote{This means that the first state is $\ket{0}$ and the second $\ket{1}$.} it can happen that the fermion of the site on the right hopps to the left and changes the global state of the system to $\ket{10}$. As we can see, for this case we have two classical errors simultaneously, while preserving fermionic charge. The reader might get creative here and think, if this error arises from an electron hopping from one site to the other, then we can get rid of this error if we make really hard for the fermion to hop. This could happen for example in a system in which both sites are far apart, let's say we have now $\ket{0\ldots1}$ and the intermediate states are somehow fixed, so the only possible interaction between the state at the beginning and the one at the end is direct. We can try to find a system such that the hopping probability decreases rapidly as we move away from the site. This is what we are going to do now.\\
+
+\colorbox{yellow}{28.11.18 At some point this section need to be finished. This can be done once the material is enough to }\\
+\colorbox{yellow}{decipher Kitaev's paper.}

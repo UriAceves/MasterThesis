@@ -1,0 +1,510 @@
+\subsection{Brief introduction to second quantization}
+
+The first action we need to take is quickly clarify the language we will be using here, the language of second quantization. The mathematical objects we are going to manipulate are quantum states, and consider we have an abstract space full with them, all possible states. For simplicity, consider a system of sites each of one can be either empty or occupied by \textbf{only one} particle. At the beginning this abstractions can be hard to catch, so we will check a small example. Assume we only have three sites, for example three small boxes, these boxes have enough capacity to contain a tennis ball inside them, but no more than one. The states of our abstract space of states are given then by the different combinations of empty and occupied boxes, for example; if the first box is occupied and the rest empty we will represent it as
+\begin{equation*}
+    \ket{1}_1\bigotimes\ket{0}_2\bigotimes\ket{0}_3 = \ket{100},
+\end{equation*}
+where the subindex in the lefthand side of the equation labels the site or box. The righthand side just shows a condensed representation of the same object, where the indices are left out. Now it must be easier to think and list all possible states of our example. Once we are clear in which space we are playing a sensible question might arise, and that is, how can I go from one state to a different one? For example how can we go from $\ket{000}$ to $\ket{100}$. We can stop to think for a moment here, what would it mean to go from $\ket{000}$ to $\ket{100}$? Well, $\ket{000}$ is a state in which all sites are empty, whereas in $\ket{100}$ the first site is occupied and the rest are empty, hence, the obvious difference between both states is that in the second, one particle is occupying site 1 (translated to the box example a ball is now stored in box 1). It would be reasonable then, to say that in order to go from $\ket{000}$ to $\ket{100}$ we would need somehow to place or create a particle in site 1. We can indicate that action using an operator that will go by the name of  $c_1^\dagger$, therefore
+\begin{equation*}
+    c_1^\dagger \ket{000} = \ket{100}.
+\end{equation*}
+The inverse process of going from $\ket{100}$ to $\ket{000}$, should now be easy to elucidate, what we need to do is to destroy or remove the particle at site 1, the operator that will indicate this action will be called $c_1$, and acts as follows
+\begin{equation*}
+    c_1 \ket{100} = \ket{000}.
+\end{equation*}
+By know the reader might be suspecting that this operations are not exclusive for site 1, and similar operators should exist for the others. We can take our curiosity further and ask, what if I want to destroy a particle at site 1 but there is none there? e.g. $c_1\ket{000}$. Or what if I try to create one particle where there is one already?\footnote{Remember that at the beginning we specified that each site can be occupied by just one particle.} e.g $c_1^\dagger\ket{100}$. For us, both actions will be forbidden, and we will enforce the rules by imposing that the result to both operations will be zero i.e.
+\begin{eqnarray}
+    c_1\ket{000} = 0,\nonumber\\
+    c_1^\dagger\ket{100} = 0.\nonumber
+\end{eqnarray}
+Let's not get confused between 0 the number and the state with all empty sites $\ket{000}$, the number $0$ means we don't have a system anymore, we lost it, and there is nothing left.\\
+
+Now we can extend this notion to an abstract space of n sites; the elements of it are given by $\ket{n_1,n_2,\ldots,n_n}$ where $n_i$ is the number of times state $i$ is occupied, in our example this is the number of particles present in site $i$. In this space, the operators we discussed previously would act as follows 
+\begin{eqnarray}
+    c_i \ket{n_1,\ldots,n_i,\ldots,n_n} = n_i\ket{n_1,\ldots,0_i,\ldots,n_n},\label{def1.1}\\
+    c_i^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n} = (1-n_i)\ket{n_1,\ldots,1_i,\ldots,n_n}.\label{def1.2}
+\end{eqnarray}
+So far, this definitions have been no more than a source of happiness for us, buy they are not exempt of problems as we will see next. Consider a system of fermionic sites, assume we have two fermions, and we tag them with colours, one \textcolor{blue}{blue} and one \textcolor{red}{red}\footnote{Fermions should be indistinguishable, but let's continue like this for the sake of the argument.} just to track changes easily (the tag nevertheless has no physical meaning). Our goal is to place them in our three sites toy system, one in site 1, and one in site 3, it doesn't matter which goes where. We will create the particles in order, first the red one, then blue. For this case we have two possibilities, placing the first one in site 1 and the second one in site 3, or the other way around, in our new language this is represented by
+
+\begin{equation}
+    \begin{aligned}[b]
+      \textcolor{blue}{c_3^\dagger}\textcolor{red}{c_1^\dagger}\ket{000} &= \textcolor{blue}{c_3^\dagger}\textcolor{red}{(1-n_1)}\ket{\textcolor{red}{1}00} \\&= \textcolor{blue}{c_3^\dagger}\textcolor{red}{(1-0)}\ket{\textcolor{red}{1}00} \\&=  \textcolor{blue}{c_3^\dagger}\ket{\textcolor{red}{1}00}\\&= \textcolor{blue}{(1-n_3)}\ket{\textcolor{red}{1}0\textcolor{blue}{1}} \\&= \textcolor{blue}{(1-0)}\ket{\textcolor{red}{1}0\textcolor{blue}{1}}\\&=\ket{\textcolor{red}{1}0\textcolor{blue}{1}},\label{wrong1}
+    \end{aligned}
+\end{equation}
+
+\begin{equation}
+    \begin{aligned}[b]
+      \textcolor{blue}{c_1^\dagger}\textcolor{red}{c_3^\dagger}\ket{000} &= \textcolor{blue}{c_1^\dagger} \textcolor{red}{(1-n_3)} \ket{00\textcolor{red}{1}} \\&= \textcolor{blue}{c_1^\dagger} \textcolor{red}{(1-0)} \ket{00\textcolor{red}{1}} \\&= \textcolor{blue}{c_1^\dagger} \ket{00\textcolor{red}{1}} \\&= \textcolor{blue}{(1-n_1)} \ket{\textcolor{blue}{1}0\textcolor{red}{1}}\\&= \textcolor{blue}{(1-0)} \ket{\textcolor{blue}{1}0\textcolor{red}{1}}\\&= \ket{\textcolor{blue}{1}0\textcolor{red}{1}}.\label{wrong2}
+    \end{aligned}
+\end{equation}
+
+Now, there are two types of people in this world. The ones scandalized by what I just wrote and the ones thinking ``why is all this people so upset by it?''. To the people in the second group, I will explain. The numbering scheme we are using for the sites is arbitrary, this means, that physically the probability distribution should not change when we relabel the sites, in other words
+\begin{equation}
+    |\ket{\textcolor{red}{1}0\textcolor{blue}{1}}|^2 = |\ket{\textcolor{blue}{1}0\textcolor{red}{1}}|^2 ,
+\end{equation}
+this leads us to conclude that there can be at most a phase factor between both states
+\begin{equation}
+    \ket{\textcolor{red}{1}0\textcolor{blue}{1}} = e^{i\phi} \ket{\textcolor{blue}{1}0\textcolor{red}{1}},% \quad \phi = \{0, \pi\}.
+\end{equation}
+when the phase is $\phi=0$ we say our particles are bosons. On the other hand, when $\phi=\pi$ our particles are fermions. Now we see the problem, since our system is fermionic we should have
+\begin{equation}
+    \textcolor{blue}{c_3^\dagger}\textcolor{red}{c_1^\dagger}\ket{000} = - \textcolor{blue}{c_1^\dagger}\textcolor{red}{c_3^\dagger}\ket{000},
+    \label{right1}
+\end{equation}
+in order to go from the state in eq. \ref{wrong1} to the one in \ref{wrong2} it is only necessary to swap particles, i.e. the blue one goes to the first site, and the red one to the third. And, as we discussed, this swapping should introduce a phase factor, a $-1$ in this case. This behaviour did not arise in eqs. \ref{wrong1}-\ref{wrong2}, as a matter of fact it looks like a boson system instead of a fermion one. So, where is the problem? Who is in charge of deciding this properties? Luckily for us, there are not a lot of objects here we can blame, the operators must be responsible, since they are the ones creating, destroying, and together ``moving" the particles. They must be wrong, but truth be told, they would be perfect for boson systems, we were just unlucky, since they are insufficient for our case. We are forced then, to look for suitable operators. As a hint we have that somewhere there must be a -1 involved. We can then modify our previous definitions in eqs. \ref{def1.1}-\ref{def1.2} introducing a phase factor as follows
+\begin{equation}
+  c_i^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n} =(-1)^{\sum_{j<i}n_j} (1-n_i)\ket{n_1,\ldots,1_i,\ldots,n_n},
+\end{equation}
+where this term $\sum_{j<i}n_j$ is only counting the number of particles in states numbered lower than i. In order to grab this definition tighter, let's use it in our problematic couple of states
+\begin{eqnarray}
+    \textcolor{blue}{c_3^\dagger}\textcolor{red}{c_1^\dagger}\ket{000} = \textcolor{blue}{c_3^\dagger}\textcolor{red}{(-1)^{\sum_{j<1}n_j}}\textcolor{red}{(1-n_1)}\ket{\textcolor{red}{1}00} = \textcolor{blue}{c_3^\dagger}\ket{\textcolor{red}{1}00}= \textcolor{blue}{(-1)^{\sum_{j<3}n_j}(1-n_3)}\ket{\textcolor{red}{1}0\textcolor{blue}{1}}=-\ket{\textcolor{red}{1}0\textcolor{blue}{1}},\label{20}\\
+    \textcolor{blue}{c_1^\dagger}\textcolor{red}{c_3^\dagger}\ket{000} = \textcolor{blue}{c_1^\dagger} \textcolor{red}{(-1)^{\sum_{j<3}n_j}(1-n_3)} \ket{00\textcolor{red}{1}} =  \textcolor{blue}{c_1^\dagger} \ket{00\textcolor{red}{1}} = \textcolor{blue}{(-1)^{\sum_{j<1}n_j}(1-n_1)} \ket{\textcolor{blue}{1}0\textcolor{red}{1}}= \ket{\textcolor{blue}{1}0\textcolor{red}{1}}.\label{21}\quad
+\end{eqnarray}
+Now we have a phase factor between both states, and our sleepless nights can end. The definition for the annihilation operator is similar
+\begin{equation}
+  c_i \ket{n_1,\ldots,n_i,\ldots,n_n} = (-1)^{\sum_{j<i}n_j}n_i\ket{n_1,\ldots,0_i,\ldots,n_n}.
+\end{equation}\\
+
+It might result beneficial for us to play around a little bit with these operators, for example, it could be interesting to see their commutation rules, i.e. what happens if we exchange the order of the operators in general. To do this, let's define the anti-commutator between two operators as 
+\begin{equation}
+  \{A,B\} = AB + BA.
+\end{equation}
+Guessing what is the anti-commutator $\{c_i^\dagger,c_j^\dagger\} $ is an easy task if we have \ref{20} and \ref{21}. By adding them we can guess it will be zero. Proving this in general is simple, let's assume without loss of generality that $j>i$
+
+\begin{equation}
+    \begin{aligned}[b]
+        c_j^\dagger c_i^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n} &= c_j^\dagger \left((-1)^{\sum_{k<i}n_k} (1-n_i)\ket{n_1,\ldots,1_i,\ldots,n_n} \right),\\
+        &=(-1)^{\sum_{k<i}n_k} (1-n_i)c_j^\dagger\ket{n_1,\ldots,1_i,\ldots,n_n},\\
+        &=(-1)^{\sum_{k<i}n_k} (1-n_i) (-1)^{\sum_{s<j}n_s} (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &=(-1)^{\sum_{k<i}n_k + \sum_{s<j}n_s} (1-n_i) (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &=(-1)^{\left(\sum_{k<i}n_k + \sum_{s\neq i<j}n_s\right) + 1} (1-n_i) (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n}.
+    \end{aligned}
+    \label{24}
+\end{equation}
+We must comment on the last step. Remember that the sum $\sum_{k<i}n_k $ represents the number of particles in sites with labels less than $i$. When the second operator ($c_j^\dagger$) is applied the number of particles has been increased because $c_i^\dagger$ created one in site i and $i<j$, we wanted to make this fact clear on the last step. Now let's do this the other way around
+
+\begin{equation}
+    \begin{aligned}[b]
+        c_i^\dagger c_j^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n} &= c_i^\dagger \left((-1)^{\sum_{s<j}n_s} (1-n_j)\ket{n_1,\ldots,1_j,\ldots,n_n} \right),\\
+        &=(-1)^{\sum_{s<j}n_s} (1-n_j)c_i^\dagger\ket{n_1,\ldots,1_i,\ldots,n_n},\\
+        &=(-1)^{\sum_{s<j}n_s} (1-n_j)(-1)^{\sum_{k<i}n_k} (1-n_i)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &=(-1)^{\sum_{s<j}n_s + \sum_{k<i}n_k} (1-n_j) (1-n_i)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n}
+    \end{aligned}\label{25}
+\end{equation}
+
+Eqs. \ref{24} and \ref{25} are very similar. The only difference is the exponents of $-1$, let's see what happens for two cases, when $n_i = 0$ and when $n_i=1$. For the former we can agree that $\sum_{s\neq i<j}n_s = \sum_{s<j}n_s$ and as a consequence 
+\begin{equation*}
+    \begin{aligned}
+        c_j^\dagger c_i^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n} &=(-1)^{\left(\sum_{k<i}n_k + \sum_{s<j}n_s\right) + 1} (1-n_i) (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &=(-1)*(-1)^{\sum_{k<i}n_k + \sum_{s<j}n_s} (1-n_i) (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &=-(-1)^{\sum_{k<i}n_k + \sum_{s<j}n_s} (1-n_i) (1-n_j)\ket{n_1,\ldots,1_i,\ldots,1_j,\ldots,n_n},\\
+        &= - c_i^\dagger c_j^\dagger \ket{n_1,\ldots,n_i,\ldots,n_n}.
+    \end{aligned}
+\end{equation*}
+Hence, 
+\begin{equation*}
+    \begin{aligned}
+        (c_j^\dagger c_i^\dagger + c_i^\dagger c_j^\dagger) \ket{n_1,\ldots,n_i,\ldots,n_n} &=0.
+    \end{aligned}
+\end{equation*}
+If $n_i=1$, this las result is trivial, since the term $(1-n_i)=0$ making the right hand side  of eqs. \ref{24} and \ref{25} equal to zero.\\
+
+So we obtain, finally, the relation 
+\begin{equation}
+  \{c_i^\dagger,c_j^\dagger\} = 0.
+\end{equation}
+A similar proof can be made for the anti-commutator
+\begin{equation}
+  \{c_i,c_j\} = 0.
+\end{equation}
+
+The only remaining relation to prove is, what happens when we mix the operators, namely what is $\{c_i^\dagger,c_j\}$. Let us prove this last relation for the general case again, just to exercise our pencils.\\
+
+Assume that $i=j$, for this case
+\begin{equation}
+  \begin{aligned}[b]
+    \{c_i^\dagger, c_i\}\ket{n_1,\ldots,n_n} &= (c_i^\dagger c_i + c_i c_i^\dagger)\ket{n_1,\ldots,n_n}, \\
+    &= c_i^\dagger c_i \ket{n_1,\ldots,n_n} + c_i c_i^\dagger \ket{n_1,\ldots,n_n},\\
+    &= c_i^\dagger (-1)^{\sum_{k<i}n_k}(n_i)\ket{n_1,\ldots,0_i,\ldots,n_n} + c_i (-1)^{\sum_{k<i}n_k}(1-n_i) \ket{n_1,\ldots,1_i,\ldots,n_n},\\
+    &=  (-1)^{\sum_{k<i}n_k}(-1)^{\sum_{k<i}n_k}(1-0_i)(n_i)\ket{n_1,\ldots,1_i,\ldots,n_n} \\&+  (-1)^{\sum_{k<i}n_k}(-1)^{\sum_{k<i}n_k}(1_i)(1-n_i) \ket{n_1,\ldots,0_i,\ldots,n_n},\\
+    &=  \left((-1)^{\sum_{k<i}n_k}\right)^2(n_i)\ket{n_1,\ldots,1_i,\ldots,n_n} \\&+  \left((-1)^{\sum_{k<i}n_k}\right)^2(1-n_i) \ket{n_1,\ldots,0_i,\ldots,n_n},\\
+    &=  n_i\ket{n_1,\ldots,1_i,\ldots,n_n} + (1-n_i) \ket{n_1,\ldots,0_i,\ldots,n_n},
+  \end{aligned}\label{ac}
+\end{equation}
+now if the original state had $n_i = 0$, from eq. \ref{ac} we get \begin{equation}
+  \begin{aligned}[b]
+    \{c_i^\dagger, c_i\}\ket{n_1,\ldots,0_i,\ldots,n_n}
+    =  0\ket{n_1,\ldots,1_i,\ldots,n_n} + (1-0) \ket{n_1,\ldots,0_i,\ldots,n_n} =  \ket{n_1,\ldots,0_i,\ldots,n_n},
+  \end{aligned}
+\end{equation}
+on the other hand, if $n_i = 1$
+\begin{equation}
+\begin{aligned}[b]
+  \{c_i^\dagger, c_i\}\ket{n_1,\ldots,1_i,\ldots,n_n}
+  =  1\ket{n_1,\ldots,1_i,\ldots,n_n} + (1-1) \ket{n_1,\ldots,0_i,\ldots,n_n} = \ket{n_1,\ldots,1_i,\ldots,n_n}
+\end{aligned}
+\end{equation}
+therefore
+\begin{equation}
+  \{c_i^\dagger, c_i\} = 1.\label{31}
+\end{equation}
+Now for the case $i\neq j$ we have two possibilities, $i<j$ or $i>j$, we will prove it for the former, the proof for the case $i>j$ is analogous and writing it doesn't add new things to the discussion\footnote{Even though it can be a nice exercise.}
+\begin{equation}
+  \begin{aligned}[b]
+    \{c_i^\dagger, c_j\}\ket{n_1,\ldots,n_n} &= (c_i^\dagger c_j + c_j c_i^\dagger)\ket{n_1,\ldots,n_n}, \\
+    &= c_i^\dagger c_j \ket{n_1,\ldots,n_n} + c_j c_i^\dagger \ket{n_1,\ldots,n_n},\\
+    &= c_i^\dagger (-1)^{\sum_{k<j}n_k}(n_j)\ket{n_1,\ldots,0_j,\ldots,n_n} \\
+    &+ c_j (-1)^{\sum_{k<i}n_k}(1-n_i) \ket{n_1,\ldots,1_i,\ldots,n_n},\\
+  \text{step 4 }  &= (-1)^{\sum_{k<i}n_k} (-1)^{\sum_{k<j}n_k}(1-n_i)(n_j)\ket{n_1,\ldots,1_i,\ldots,0_j,\ldots,n_n} \\
+    &+ (-1)^{(\sum_{k<j}n_k) + 1} (-1)^{\sum_{k<i}n_k}n_j(1-n_i) \ket{n_1,\ldots,1_i,\ldots,0_j,\ldots,n_n},\\
+    &= (-1)^{\sum_{k<i}n_k} (-1)^{\sum_{k<j}n_k}(1-n_i)(n_j)(1+(-1)^1)\ket{n_1,\ldots,1_i,\ldots,0_j,\ldots,n_n}\\
+    &=0.
+  \end{aligned}
+  \label{32}
+\end{equation}
+
+
+In the second term of step 4, a $+1$ appears in the exponent due to the fact that one fermion was created in the previous step in position $i$, and since $i<j$ then $\sum_{k<j}n_k$ will be what it was, plus the fermion that got created. It is the same trick we used in eq. \ref{24} but explained in a different way. From eqs. \ref{31}, \ref{32} and the analogous eq. to \ref{32} when $i>j$ we can conclude that  $\{c_i^\dagger,c_j\} = \delta_{ij}$ as we wanted to prove.\\
+
+
+\subsection{Dirac's equation}
+This proof follows the one given by Griffiths \cite{griffiths}.\\
+Let's start with the relativistic energy-momentum relation
+\begin{equation}
+  E^2 = p^2 c^2 + m^2 c^4,
+\end{equation}
+or in four-vector notation
+\begin{equation}
+  p^\mu p_\mu - m^2c^2 = 0.
+  \label{covmom}
+\end{equation}
+And we, as Dirac, are looking for a way to factor this relation. Our lifes would be simple if we only had $p_0$, because in that case\footnote{Here we take the following convention. Greek indexes go from 0 to 3, and Roman go from 1 to 3.} $p_i = 0$, and as a consequence we can factor the equation trivially
+\begin{equation*}
+  (p_0)^2 - m^2 c^2 = (p^0 + mc)(p^0 - mc) = 0.
+\end{equation*}
+We went from a quadratic equation to two linear ones
+
+\begin{eqnarray}
+  p_0 + mc = 0,\\
+  p_0 - mc = 0.
+\end{eqnarray}
+This is an easier problem. But in general we are not so lucky, in that case we need to tackle the problem when at least one component of the momentum is non-zero $p_i \neq 0$.\\
+
+We are looking then for a way to factor eq. \ref{covmom} like this
+\begin{equation*}
+  p^\mu p_\mu - m^2c^2 = (1_\mu p^\mu+mc)(1^\nu p_\nu -mc),
+\end{equation*}
+where $1^\mu = (1,1,1,1)$. But there is a small problem with this equation, let's expand eq. \ref{covmom} to see it clearly
+\begin{equation*}
+  p^\mu p_\mu - m^2c^2 = p^0p_0 + p^1p_1 + p^2p_2 + p^3p_3 - m^2c^2,
+\end{equation*}
+on the other hand\footnote{Here we are using the metric $g_{\mu\nu},$ such that $g_{00} = 1, g_{ii} = -1,$ and $g_{\gamma \delta} = 0$ if $\gamma \neq \delta$.}
+
+\begin{equation*}
+  \begin{aligned}
+    (p^\mu+mc)(p_\nu -mc) = &(p^0 - p^1 - p^2 - p^3 - mc)(p_0 - p_1 - p_2 - p_3 - mc), \\
+    = &p^0p_0 + p^1p_1 + p^2p_2 + p^3p_3 - m^2c^2 \\
+    &- p^0p_1 - p^0p_2 - p^0p_3 - p^1p_0 + p^1p_2 + p^1p_3 \\
+    &- p^2p_0 + p^2p_1 + p^2p_3 - p^3p_0 + p^3p_1 + p^3p_2.
+  \end{aligned}
+\end{equation*}
+As we can see we obtain crossed terms that are not supposed to be there. We could get rid of them by inserting some coefficients, like this
+
+\begin{equation}
+  p^\mu p_\mu - m^2c^2 = (\beta^\mu p_\mu + mc)(\gamma^\nu p_\nu -mc),
+  \label{fact1}
+\end{equation}
+where we changed $p^\mu$ to $p_\mu$ for convenience, since that change can be absorbed in the $\beta^\mu$ coefficients. Let's see now what happens
+\begin{equation*}
+  (\beta^\mu p_\mu + mc)(\gamma^\nu p_\nu -mc) = \beta^\mu\gamma^\nu p_\mu p _\nu - mc(\beta^k - \gamma^k)p_k - m^2c^2,
+\end{equation*}
+we don't want the linear terms, this forces us to choose $\beta^\mu = \gamma^\mu$, we could be tempted to think that $\gamma^\mu = (1,1,1,1)$ solves the problem, but we need to remember that now both of the four-momentum vectors are covariant, originally one of them was covariant and the other contravariant, this introduces sign changes on the spatial coordinates\footnote{Just as a quick reminder $p^\mu = (p^0, p^1, p^2, p^3)$, $p_\mu = g_{\nu\mu}p^\nu = (p^0,-p^1,-p^2,-p^3)$.}. After all this, eq. \ref{fact1} becomes
+\begin{equation}
+  p^\mu p_\mu - m^2c^2 = (\gamma^\mu p_\mu + mc)(\gamma^\nu p_\nu -mc),
+  \label{fact2}
+\end{equation}
+we look for $\gamma$ such that
+
+\begin{equation*}
+  (\gamma^\mu p_\mu + mc)(\gamma^\nu p_\nu -mc) = \gamma^\mu\gamma^\nu p_\mu p_\nu - m^2c^2 = p_\mu p_\nu - m^2c^2,
+\end{equation*}
+our problem will be solved then once we find $\gamma^\mu$ such that $\gamma^\mu\gamma^\nu p_\mu p_\nu = p_\mu p_\nu$, let's explore this equation further
+
+\begin{equation*}
+  \begin{aligned}
+    \gamma^\mu\gamma^\nu p_\mu p_\nu = &(\gamma^\mu p_\mu)(\gamma^\nu p_\nu),\\
+    =&(\gamma^0 p_0 + \gamma^1 p_1 + \gamma^2 p_2 + \gamma^3 p_3)(\gamma^0 p_0 + \gamma^1 p_1 + \gamma^2 p_2 + \gamma^3 p_3),\\
+    = &(\gamma^0)^2 (p_0)^2 + (\gamma^1)^2 (p_1)^2 + (\gamma^2)^2 (p_2)^2 + (\gamma^3)^2 (p_3)^2 \\
+    & (\gamma^0\gamma^1 + \gamma^1\gamma^0)p_0p_1
+    +(\gamma^0\gamma^2 + \gamma^2\gamma^0)p_0p_2
+    +(\gamma^0\gamma^3 + \gamma^3\gamma^0)p_0p_3\\
+    &+(\gamma^1\gamma^2 + \gamma^2\gamma^1)p_1p_2
+    +(\gamma^1\gamma^3 + \gamma^3\gamma^1)p_1p_3
+    +(\gamma^2\gamma^3 + \gamma^3\gamma^2)p_2p_3.
+  \end{aligned}
+\end{equation*}
+
+By looking at the quadratic terms we are inclined to guess $\gamma^0 = 1$, $\gamma^j = i$. But this guess falls apart when we realize the crossed terms don't vanish. We need a smarter guess. Dirac was in the same position as us at some point, but he was a very smart, and brave man. So he thought, \textit{what if instead of scalar coefficients I use matrices?} Why? because the crossed terms share a similar form $\gamma^\mu\gamma^\nu + \gamma^\nu\gamma^\mu$ and we can maybe take advantage of the fact that the matrix product does not commute in general. Our goal has changed then, now we want a set of matrices such that
+
+\begin{equation*}
+  (\gamma^0)^2= 1, \quad (\gamma^j)^2 = -1, \quad \gamma^\mu \gamma^\nu + \beta^\nu \beta^\mu = 0 \text{ for } \mu \neq \nu.
+\end{equation*}
+in short\footnote{Here the curly bracket denote the anticommutator $\{A,B\} = AB + BA$.}
+\begin{equation}
+  \{\gamma^\mu, \gamma^\nu\} = g^{\mu \nu}.
+\end{equation}
+
+Dirac found a set of matrices that solve the problem. The only detail is, they are $4x4$ matrices
+
+\begin{equation}
+  \gamma^0 = \begin{pmatrix}
+    \sigma^0 & 0\\
+    0 & \sigma^0
+  \end{pmatrix} , \qquad
+  \gamma^i = \begin{pmatrix}
+    0 & \sigma^j\\
+    -\sigma^j & 0
+  \end{pmatrix}
+\end{equation}
+where $\sigma^\mu$ are 2x2 complex matrices, $\sigma^0 = \mathbb{1}$, $\sigma^j$ is a Pauli matrix, and $0$ is the 2x2 matrix filled with zeros.\\
+
+Thus, we are ready to get Dirac equation, let's take again
+\begin{equation*}
+  p^\mu p_\mu - m^2c^2 = (\gamma^\mu p_\mu + mc)(\gamma^\nu p_\nu -mc) = 0,
+\end{equation*}
+and from the product take any factor and set it to zero
+\begin{equation}
+  \gamma^\mu p_\mu - mc = 0.
+\end{equation}
+We can make the substitution $p_\mu \rightarrow i\hbar \partial_\mu$ and apply it to $\psi$
+
+\begin{equation}
+  (\gamma^\mu (i\hbar \partial_\mu) - mc)\psi = i\hbar \gamma^\mu \partial_\mu \psi - mc\psi = 0.
+\end{equation}
+
+This is Dirac's equation in covariant form. A remark needs to me made at this point. $\psi$ is no longer a complex number, but a 4 element column matrix.
+
+\begin{equation}
+  \psi = \begin{pmatrix}
+    \psi_1\\
+    \psi_2\\
+    \psi_3\\
+    \psi_4
+  \end{pmatrix}.
+\end{equation}
+In its non-covariant version, Dirac's equation reads
+\begin{equation}
+    i\hbar \frac{\partial}{\partial t} \psi = (c \bm{\alpha} \bm{p} + \beta mc^2)\psi
+\end{equation}
+It is important to remark that $\bm{\alpha}$ and $\beta$ are $4\times4$ matrices that don't necessarily commute, and they are not unique. Nevertheless, a form proposed by Dirac himself is 
+
+\begin{equation}
+    \alpha_i = \sigma_i \otimes \sigma_i  = \begin{pmatrix}
+    0 & \sigma_i\\
+    \sigma_i & 0
+    \end{pmatrix}, \quad \beta = \sigma_z \otimes \mathbb{1}  = \begin{pmatrix}
+    \mathbb{1} & 0\\
+    0 & -\mathbb{1}
+    \end{pmatrix}.
+\end{equation}
+Note that $\gamma^\mu = (\beta; \beta \bm{\alpha})$.\\
+
+In order to make this easier we will adhere to the convention $\hbar = c = 1$, as a result, Dirac's equation in both forms will be
+
+\begin{equation}
+  (i \gamma^\mu \partial_\mu - m)\psi = 0\label{diracCov}
+\end{equation}
+\begin{equation}
+      i\frac{\partial}{\partial t} \psi = ( \bm{\alpha} \bm{p} + \beta m)\psi\label{diracNonCov}
+\end{equation}
+
+\subsection{Antiparticles}
+Most of this comes from Aguado's review \cite{aguado}.\\
+
+As our next step we can look for eigenenergies of eq. \ref{diracNonCov}, in other words, solve
+
+\begin{equation}
+    \begin{pmatrix} 
+      m \mathbb{1}_{2\times2} & \bm{\sigma}\bm{p}\\
+      \bm{\sigma}\bm{p} & -m\mathbb{1}_{2\times2}
+    \end{pmatrix}
+    \begin{pmatrix}
+     \phi_A\\
+     \phi_B
+    \end{pmatrix} = E\begin{pmatrix}
+     \phi_A\\
+     \phi_B
+    \end{pmatrix},
+    \label{diracMat}
+\end{equation}
+where
+
+\begin{equation}
+\begin{aligned}[b]
+    \bm{\sigma}\bm{p} & = \sigma_x p_x + \sigma_y p_y + \sigma_z p_z,\\
+    &= \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} p_x + 
+    \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} p_y + \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} p_z\\
+    &= \begin{pmatrix} 0 & p_x \\ p_x & 0 \end{pmatrix} + 
+    \begin{pmatrix} 0 & -i  p_y \\ i p_y & 0 \end{pmatrix}  + \begin{pmatrix} p_z & 0 \\ 0 & -p_z \end{pmatrix}\\
+    &= \begin{pmatrix} p_z & p_x -i  p_y\\ p_x + ip_y & -p_z \end{pmatrix} 
+\end{aligned}
+\end{equation}
+
+So let's do it
+
+\begin{equation*}
+    \begin{vmatrix}
+     (m - E) \mathbb{1}_{2\times2} & \bm{\sigma}\bm{p}\\
+      \bm{\sigma}\bm{p} & (-m -E)\mathbb{1}_{2\times2}
+    \end{vmatrix} = 0
+\end{equation*}
+expanding
+
+\begin{equation*}
+    \begin{vmatrix}
+     m - E & 0 & p_z & p_x -i  p_y\\
+     0 & m-E & p_x + ip_y & -p_z \\
+     p_z & p_x -i  p_y & -m-E & 0 \\
+     p_x + ip_y & -p_z & 0& -m-E\\
+    \end{vmatrix} = 0
+\end{equation*}
+the equation we get out of it is\footnote{Thanks to Wolframalpha}
+\begin{equation}
+    (p_x^2 + p_y^2 + p_z^2 + m^2 - E^2)^2 = (\bm{p}^2 + m^2 - E^2)^2 = 0
+\end{equation}
+by inspection we can already check that the solutions are\footnote{It might be useful to note that we might already know these energies, if we kept using $c$ they would look like $E = \pm \sqrt{\bm{p}^2c^2 + m^2c^4}$, familiar equations, specially for the case of a particle at rest (i.e. $\bm{p} = 0$) $E = \pm \sqrt{m^2c^4} = \pm mc^2$}
+\begin{equation*}
+\begin{aligned}
+  E_1 &= \sqrt{\bm{p}^2 + m^2}\\
+  E_2 &= \sqrt{\bm{p}^2 + m^2}\\
+  E_3 &= -\sqrt{\bm{p}^2 + m^2}\\
+  E_4 &= -\sqrt{\bm{p}^2 + m^2}
+  \end{aligned}
+\end{equation*}
+for the moment we are not interested in the general eigenstates, but it might be worthwhile to analyse the case for particles at rest (i.e. $\bm{p}=0$), for this case the matrix in eq. \ref{diracMat} is already diagonal, therefore the eigenvalues are the diagonal elements, hence we obtain two particles with energy $E_+ = m$ and two with energy, $E_- = -m$, as for the eigenvectors they are
+
+\begin{equation*}
+    \psi_1 = \begin{pmatrix} 1 \\0 \\0 \\0\end{pmatrix}, \quad 
+    \psi_2 = \begin{pmatrix} 0 \\1 \\0 \\0\end{pmatrix}, \quad 
+    \psi_3 = \begin{pmatrix} 0 \\0 \\1 \\0\end{pmatrix}, \quad 
+    \psi_4 = \begin{pmatrix} 0 \\0 \\0 \\1\end{pmatrix}.
+\end{equation*}
+In principle, having negative energy solutions does not make sense, but instead of disregarding this parts Dirac proposed they are also physical solutions corresponding to half spin particles with negative energies. One of the things this result tells us is that, an electron produced from the vacuum should be accompanied by a hole with negative energy.\\
+
+\colorbox{red}{13.08.19 Insert the discussion about holes here}\\
+
+\colorbox{red}{13.08.19 I still have to talk about spinors before, to explain why the solutions are spin up and spin down}
+
+\subsection{Majorana equation}
+
+Let's go back to eq. \ref{diracCov}, as we can notice, the elements of $\gamma^\mu$ can be complex. But what happens if we constrain Dirac's equation to real value? In other words, can we find $\gamma^\mu$ such that these matrices are purely imaginary?\footnote{Remember they appear in the term $i\gamma^\mu\partial_\mu$ of Dirac's equation.} Ettore Majorana in 1937 \cite{Majorana37} discovered a set of purely imaginary gamma matrices $\tilde{\gamma}^0 = \sigma_y \otimes \sigma_x$, $\tilde{\gamma}^1 = i\sigma_x\otimes \mathbb{1}$, $\tilde{\gamma}^2 = i\sigma_z\otimes \mathbb{1}$, $\tilde{\gamma}^3 = i\sigma_y\otimes \sigma_y$, this leads to
+\begin{equation}
+    (i\tilde{\gamma}^\mu\partial_\mu - m)\tilde{\psi} = 0,\label{majDirac}
+\end{equation}
+since the matrices $i\tilde{\gamma}^\mu$ are purely real this forces $\tilde{\psi}$ to be also purely real. This leads to the condition
+\begin{eqnarray}
+  \tilde{\psi} = \tilde{\psi}^*.
+\end{eqnarray}
+This is the so-called reality condition. Since an electrically charged particle is different from its antiparticle this means that the any particle resulting from eq. \ref{majDirac} has to be electrically neutral and equal to its own antiparticle.\\
+
+\colorbox{red}{13.08.19 The ideas are there, but very rough. It needs to be rewritten}
+
+\subsection{Charge conjugation}
+
+If we want to approach formally the result of a particle being its own antiparticle we have to impose charge conjugation symmetry, this means that we will assume that the charge conjugated particle is equal to the original one and see what consequences does it have. In order to make the charge explicit in Dirac's equation we have to couple it to an electromagnetic field $A_\mu$ by making the substitution $i\partial_\mu \rightarrow i\partial_\mu + eA_\mu$. As a consequence, Dirac's equation is modified to
+\begin{equation}
+    [\gamma^\mu(i\partial_\mu + eA_\mu) - m]\psi = 0.
+    \label{dir1}
+\end{equation}
+The charge conjugated solution $\psi_c$ should satisfy the same equation but with the sign of the electric charge flipped, hence
+\begin{equation}
+    [\gamma^\mu(i\partial_\mu - eA_\mu) - m]\psi_c = 0.
+    \label{dir2}
+\end{equation}
+We want to see what is the connection between $\psi$ and $\psi_c$ and how can we arrive to the result $\psi = \psi_c$. So let's start by taking the complex conjugate of eq. \ref{dir1}
+\begin{equation}
+    [-\gamma^{\mu*}(i\partial_\mu - eA_\mu) - m]\psi^* = 0.
+    \label{dir1.1}
+\end{equation}
+Now we define a matrix $\mathcal{C}$ such that $-(\mathcal{C}\gamma^0)\gamma^{\mu*} = \gamma^\mu(\mathcal{C}\gamma^0)$, then we can rewrite eq. \ref{dir1.1} to look like eq. \ref{dir2}
+\begin{equation}
+    [\gamma^\mu(i\partial_\mu - eA_\mu) - m]\mathcal{C}\gamma^0\psi^* = 0.
+\end{equation}
+So according to this, we can define charge conjugation as\footnote{Check this link, it has a nice explanation \url{https://physics.stackexchange.com/questions/48334/charge-conjugation-in-dirac-equation}} $\psi = \mathcal{C}\gamma^0 \psi^*$. The operator $\mathcal{C}$ is not unique, a nice choice for our case is $\mathcal{C} = i\gamma^2$ where
+\begin{equation}
+    i\gamma^2 = \begin{pmatrix}
+    0 & 0 & 0 & -i \\
+    0 & 0 & i & 0 \\
+    0 & -i & 0 & 0 \\
+    i & 0 & 0 & 0
+    \end{pmatrix}.
+\end{equation}
+In our new language, then, when we say a particle is equal to its antiparticle we mean
+
+\begin{eqnarray}
+  \psi = \psi_c = i\gamma^2\psi^*.
+\end{eqnarray}
+This is sometimes called the pseudo-reality condition \cite{Jackiw2012}. There is another representation (i.e. election of the $\gamma^\mu$ matrices) that can help us to get the final insight we want about the mathematical structure necessary to have this Majorana particles (from now on we will call Majorana particles to all particles such that they are their own antiparticle). The choice this time is
+
+\begin{equation}
+    \alpha_i = \begin{pmatrix}
+    -\sigma_i & 0\\
+    0 & \sigma_i
+    \end{pmatrix}, \beta = \begin{pmatrix}
+     0 & \mathbb{1}\\
+    \mathbb{1} & 0
+    \end{pmatrix},
+\end{equation}
+which leads to
+\begin{equation}
+    \gamma^0 = \begin{pmatrix}
+    0 & \mathbb{1}\\
+    \mathbb{1} & 0
+    \end{pmatrix}, \gamma^i = \begin{pmatrix}
+    0 & \sigma_i\\
+    -\sigma_i & 0
+    \end{pmatrix}.
+\end{equation}
+This is known as the Weyl representation, and for this representation Dirac's equation is 
+\begin{equation}
+    \begin{pmatrix}
+     -m & i\partial_t -\bm{\sigma p} \\ i\partial_t +\bm{\sigma p} & -m
+    \end{pmatrix}\begin{pmatrix} \psi_L\\ \psi_R \end{pmatrix} = 0,
+\end{equation}
+for this case, the pseudo-reality condition is rewritten as 
+\begin{equation}
+    \begin{pmatrix} \psi_L\\ \psi_R \end{pmatrix} = \begin{pmatrix}
+    0 & i\sigma_y\\
+    -i\sigma_y & 0
+    \end{pmatrix}\begin{pmatrix} \psi_L^*\\ \psi_R^* \end{pmatrix} = 
+    \begin{pmatrix} i\sigma_y\psi_R^*\\ -i\sigma_y\psi_L^* \end{pmatrix}. 
+\end{equation}
+This decouples then to two equations
+\begin{equation}
+  (i\partial_t + \bm{\sigma p})\psi_L + im\sigma_y\psi_L^* = 0, \quad
+  (i\partial_t - \bm{\sigma p})\psi_R - im\sigma_y\psi_R^* = 0.\label{weylpseudo}
+\end{equation}
+The fact that in both these equations we have coupling of particles and antiparticles has as a consequence that the conservation of charge is not given. Formally this means that the gauge invariance $\psi(r) \rightarrow e^{i\theta}\psi(r)$ is not present, this implies that Majorana particles don't couple to the electromagnetic field, and are necessarily charge neutral.\textcolor{red}{13.08.19 Look for a better explanation of this.}\\
+
+% Finally we will get a profound result by analysing the stationary solutions to eq. \ref{weylpseudo}. Let's remember that this solutions are of the form $\phi_E = e^{iEt}\psi$. For each one of these solutions there exist a charge conjugated counterpart at negative energy $\phi_{-E}$, this is
+% \begin{equation}
+%     \phi_{-E} = \mathcal{C}\psi_E^*
+% \end{equation}
+% now we can build a field consisting of these modes
+% \begin{equation}
+%     \hat{\Psi}(\bm{r},t) = \sum_{E>0} a_E e^{-iEt}\phi_E + \sum_{E<0} b_{-E}^\dagger e^{-iEt}\phi_{-E},
+% \end{equation}
+% where $a_E$ is the annihilation operator for particles at energy $E$, and $b_{-E}^\dagger$ is the creation operator for antiparticles at energy $-E$. We can rewrite this equation as
+% \begin{equation}
+%     \hat{\Psi}(\bm{r},t) = \sum_{E>0} a_E e^{-iEt}\phi_E +  b_{E}^\dagger e^{iEt}\mathcal{C}\phi_{E}^*,
+% \end{equation}
+% by demanding $a_E = b_E$, we get the final field operator for a Majorana particle
+% \begin{equation}
+%     \hat{\Psi}(\bm{r},t) = \sum_{E>0} a_E e^{-iEt}\phi_E +  a_{E}^\dagger e^{iEt}\mathcal{C}\phi_{E}^*,
+% \end{equation}
+% \begin{equation*}
+%     \mathcal{C} = \begin{pmatrix}
+%     0 & -i\bm{\sigma}^2 \\ 
+%     i\bm{\sigma}^2 & 0
+%     \end{pmatrix}
+% \end{equation*}

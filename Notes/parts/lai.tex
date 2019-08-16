@@ -1,0 +1,83 @@
+This section corresponds to \cite{2019Lai}.\\
+
+Around the time Kitaev published his paper about Majorana zero modes at the end of a 1D chain, it was found that such zero modes in a topological p-wave superconductor can be detected by measuring the normal metal-superconductor (NS) differential tunneling conductance. If the Majoranas are there this would be reflected in a zero bias conductance peak (ZBCP). For a while this was considered as one of the smoking guns for the experimental search of such states. In fact this result was also discovered and expanded by other groups as well. So it seemed to be the case that the presence or absence of a ZBCP in the NS tunneling indicated the existence or absence of Majorana bound states. This lead to a huge development of materials that could display this property, and in fact a lot of them were discovered. Even surpassing the quality of the originally reported ones by far. If this is the case then, an obvious question would be, how come there is still debate about if Majorana zero modes have been observed or not?
+
+\colorbox{orange}{14.02 Before the last sentence there must be already a part saying that there is an unsettled debate}
+
+\colorbox{orange}{about the experimental observation of majorana zero modes.}
+
+In 2017, the question was raised over whether all the ZBCP observed so far could have been originated from another sources, like Andreev bound states (ABS) which are close to zero energy, and inside the supercoducting gap \cite{PhysRevB.96.075161}. The posibility of having near-zero-energy states generating the ZBCP was not new and the fact that it could arise from ABS was proved experimentally. Finally we are left with the problem that we can not assume  a majorana zero mode is there just because a ZBCP is observed experimentally. Another important fact to point out is that. The presence of low-energy midgap Andreev bound states seems to be rather generic in nanowires like the one in the original paper of Kitaev. The collaboration between Zeeman splitting and spin orbit coupling (SOC) allows this ABS to lie in such low energies. A key difference between ABS and majorana zero modes is that the later arise as zero energy modes only in the topological regime (when the Zeeman spin splitting is larger than the critical field neccessary for a topological quantum phase transition (TQPT)), whereas the former arise in the trivial regime (Zeeman field below critical field). This solves a problem but adds another one, there is no way to experimentally precisely know the critical field.\\
+
+In this paper a way to discern between one or the other, is by careful comparison between the conductance spectra while doing tunneling measurements from the two ends of the nanowire.\\
+
+The setup is very simple, there are leads at both ends, connected by a semiconductor nanowire, and extra details are added on top of it. It goes as follows, from left to right: lead potential barrier, quantum dot, s-wave superconductor, potential barrier, lead. It is important to remember that there is still a semiconductor wire connecting both leads. A schematic plot can be found on \cite{PhysRevB.96.075161}. The conductance will be analyzed on both ends (at the leads) $G_\alpha = dI_\alpha / dV_\alpha$, where $\alpha$ is a label for the lead side $L$, or $R$. $I_\alpha$ denotes the current, and $V_\alpha$ the voltage at side $\alpha$. The Hamiltonian for this nanowire is 
+
+\begin{equation}
+\begin{aligned}
+ \hat{H} = \frac{1}{2} \int dx \hat{\Psi}^\dagger(x) H_{NW} \hat{\Psi}(x),\qquad \qquad \qquad \quad\\
+ H_{NW} = \left( -\frac{\hbar^2}{2m^*}\partial_x^2 - i\alpha_R \partial_x \sigma_y - \mu \right)\tau_z + V_z\sigma_x + \Delta (V_z) \tau_x - i\Gamma,
+\end{aligned}
+\end{equation}
+where $\hat{\Psi} = (\hat{\psi}_\uparrow,\hat{\psi}_\downarrow,\hat{\psi}_\downarrow^\dagger,-\hat{\psi}_\uparrow^\dagger)^T$ is the wavefunction in Nambu space. $\sigma_i$ are the pauli matrices in spin space. $\tau_i$ are the Pauli matrices in particle-hole space. $m^*$ is the effective mass of the electrons, $\alpha_R$ the Rashba spin-orbit coupling, $V_z$ a magnetic field induced Zeeman splitting. $\Delta(V_z)$ is the superconducting pairing potential and it is expresed as 
+\begin{equation}
+    \Delta(V_z) = \Delta_0\sqrt{1-(V_z/V_c)},
+\end{equation}
+here $\Delta_0$ is the original gap (without the magnetic field), and $V_c$ is the field at which the superconducting gap collapses. Finally $\Gamma$ is a dissipation parameter often observed experimentally. An important comment here is that neither $\Gamma$ nor $V_c$ are essential parts of the theory to distinguish between ABS and Majorana zero modes.
+
+The potential of the previously schematized device is assumed to contain a quantum dot at the left end, that can generate a subgap Andreev bound state in the trivial phase. The hamiltonian of the quantum dot is 
+\begin{equation}
+    H_{QD} = \left(-\frac{\hbar^2}{2m^*}\partial^2_x - i\alpha_R \partial_x\sigma_y - \mu + V_{dot}(x)\right)\tau_z + V_z\sigma_x - i\Gamma,
+\end{equation}
+
+where $V_{dot}(x) = V_D\cos(3\pi x/ 2l_D)$ is the confinement potential in the quantum dot. $l_D$ is the length of the quantum dot and is only a fraction of the nanowire length $L$. The shape of the quantum dot is irrelevant for this analysis. 
+
+The hamiltonians for the leads are
+
+\begin{equation}
+    H_{lead} = \left(-\frac{\hbar^2}{2m^*}\partial^2_x - i\alpha_R\partial_x\sigma_y -\mu + E_{lead}\right)\tau_z + V_z\sigma_x - i\Gamma,
+\end{equation}
+
+where $E_{lead}$ is added as a gate voltage\footnote{How come is this a gate voltage?}. Each lead induces a barrier at the junction connecting the lead and the nanowire. The hamiltonian for the barrier is given by
+
+\begin{equation}
+    H_{barrier} = \left(-\frac{\hbar^2}{2m^*}\partial^2_x - i\alpha_R\partial_x\sigma_y -\mu + V_{barrier}\right)\tau_z + V_z\sigma_x - i\Gamma,
+\end{equation}
+
+where $V_{barrier} = E_{barrier}\Pi_{lbarrier}$ is a box-like potential of height $E_{barrier}$ and width $lbarrier$.\\
+
+It is important to notice that these hamiltonians do not overlap in real space, and they are in order, from left to right $H_{lead}$, $H_{barrier}$, $H_{QD}$, $H_{NW}$, $H_{barrier}$, and finally $H_{lead}$. Temperature effects are taken into consideration. The finite-temperature conductance ($G_T$) is obtained with 
+\begin{equation}
+    G_T(V) = -\int^\infty_{-\infty} dEG_0(E) \frac{df(E-V)}{dE}.
+\end{equation}
+where $f(E)$ is the Fermi-Dirac distribution.\\
+
+The temperature conductance $G_0=dI/dV$ is calculated by discretizing the hamiltonians into a lattice chain and obtaining the scattering matrix\footnote{I have no idea how to do this.} using a python package called Kwant. The zero-temperature conductance in units of $e^2/h$ is computed using
+
+\begin{equation}
+    G_0 = 2 + \sum_{\sigma,\sigma' = \uparrow, \downarrow} \left(|r_{eh}^{\sigma \sigma'}|^2 - |r_{ee}^{\sigma \sigma'}|^2\right),
+\end{equation}
+
+where $r_{eh}$ and $r_{ee}$ are the Andreev, and normal reflection respectively. The 2 in the same equation comes from the contribution of two spin channels while we consider a one-subband system.
+
+In the tunneling limit\footnote{What is that?} conductance can be understood from the local density of states. Such density can be estimated from the energy spectrum and the wavefunction density $|Psi(x)|^2$. To calculate this the barriers are ignored\footnote{Why?}, so the total hamiltonian is
+
+\begin{equation}
+    \begin{aligned}
+        H_{tot} = H_{QD} + H_{NW} + H_{t},\\
+        H_t = u + u^\dagger, \hat{f}_\alpha^\dagger\left(-t\delta_{\alpha\beta} + i\alpha_R \sigma_{\alpha\beta}^y\right)\hat{c}_\beta + h.c.,
+    \end{aligned}
+\end{equation}
+
+here $H_t$ is the coupling between the quantum dot and the nanowire. $\hat{f}$ creates an electron at the end of the dot, adjacent to the nanowire. $\hat{c}$ annihilates an electron at the end of the nanowire adjacent to the dot. The difference is subtle but it consists of where is the electron placed, in both sides is at the junction of the dot and the nanowire, but in one case is in the nanowire side, and in the other case is at the quantum dot side.\\
+
+The idea of the paper is to see if the ZBCPs at both ends show correlation when the majorana bound states or the ABS arise. The energy spectrum and the form of the lowest lying wave functions is also analyzed. We can take the eigenfunctions $\phi_\epsilon(n) = (u_{n\uparrow},u_{n\downarrow},v_{n\uparrow},v_{n\downarrow})^T$ and their negative energy counterpart $\phi_{-\epsilon}(n) = (v_{n\uparrow}^*,v_{n\downarrow}^*,u_{n\uparrow}^*,u_{n\downarrow}^*)^T$ as represented in Nambu space and we combine them so they satisfy the Majorana conditions
+
+\begin{eqnarray}
+    \psi_A(n) =\frac{1}{\sqrt{2}}[\phi_\epsilon(n) + \phi_{-\epsilon}(n)],\\
+    \psi_B(n) =-\frac{i}{\sqrt{2}}[\phi_\epsilon(n) - \phi_{-\epsilon}(n)].
+\end{eqnarray}
+
+In general $\psi_A(n)$ and $\psi_B(n)$ are not eigenstates of the BdG Hamiltonian, except when $\epsilon = 0$. We can proceed to check the form of both wavefunctions. If $|\psi_A(n)|^2$ and $|\psi_B(n)|^2$ are localized at opposite ends of the nanowire then they are a majorana pair, which means the ZBCP we see in the conductance plots results from majorana zero modes. On the other hand, if we cannot clearly separate both states then the ZBCP arised from ABS.\\
+
+
+\colorbox{green}{27.03.2019 That's the idea in principle. The rest of the paper is results and discussion.}
