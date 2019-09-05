@@ -8,8 +8,8 @@ The priorities go from 1 to 10 where 1 is very low and 10 is top priority.
 
 | Task | Priority | Time it should take | Planned period | Status |
 |------|----------|---------------------|----------------|--------|
-| Make the basics of the module | 9 | 3 days | 03.-05.09 | Currently doing |
-| Check how to register the thesis | 8 | 1 week | 26.-30.08.| Pending |
+| Duplicate the Hamiltonian in the diagonal block for the bdg method | 8 | 2 days | 05.-06.09.| Pending |
+| Check how to register the thesis | 5 | 1 week | 26.-30.08.| Pending |
 | Register the thesis | 3 | 1 week | 30.09-04.10 | Pending |
 | Write the thesis | 1 | 1 Month | | Pending |
 
@@ -30,3 +30,4 @@ The priorities go from 1 to 10 where 1 is very low and 10 is top priority.
 | Update the notes | 5 | Couple of hours | 26.-30.08 | Done | 5 hours |
 |Check the Abrikosov-Gorkov equations in the Lattice Model (section 2.3)| 7 | One week | 26.-30.08| Done 04.09 | 1.5 weeks |
 | Update the notes | 5 | Couple of hours | 04.09 | Done | 4 hours |
+| Make the basics of the module | 9 | 3 days | 03.-05.09 | Done 05.09 | 2 days |
