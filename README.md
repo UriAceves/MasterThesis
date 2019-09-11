@@ -8,8 +8,7 @@ The priorities go from 1 to 10 where 1 is very low and 10 is top priority.
 
 | Task | Priority | Time it should take | Planned period | Status |
 |------|----------|---------------------|----------------|--------|
-|With the new program and these parameters, calculate the band structure (itype=4) and LDOS (itype=2) with regular hamiltonian | 8 | 1 day | 10.09 | Doing |
-|With the new program and these parameters, calculate the band structure (itype=4) and LDOS (itype=2) with duplicated hamiltonian| 8 | 1 day | 11.09 | Pending |
+|Sdd Delta (number) in the off-diagonal (e-h and up-down) part. Recalculate the LDOS| 7 | 2 days| 11.-12.09| Doing |
 |Check what happens to the Hamiltonian in tight binding | 7 | 3 days| 9.-11.09| Doing |
 | Check how to register the thesis | 5 | 1 week | 26.-30.08.| Pending |
 | Register the thesis | 3 | 1 week | 30.09-04.10 | Pending |
@@ -34,3 +33,5 @@ The priorities go from 1 to 10 where 1 is very low and 10 is top priority.
 | Update the notes | 5 | Couple of hours | 04.09 | Done | 4 hours |
 | Make the basics of the module | 9 | 3 days | 03.-05.09 | Done 05.09 | 2 days |
 | Duplicate the Hamiltonian in the diagonal block for the BdG method | 8 | 2 days | 05.-06.09.| Done 06.09 | 2 days |
+|With the new program and these parameters, calculate the band structure (itype=4) and LDOS (itype=2) with regular hamiltonian | 8 | 1 day | 10.09 | Done 11.09 | 2 days |
+|With the new program and these parameters, calculate the band structure (itype=4) and LDOS (itype=2) with duplicated hamiltonian| 8 | 1 day | 11.09 | Done 11.09 | 1 day |
